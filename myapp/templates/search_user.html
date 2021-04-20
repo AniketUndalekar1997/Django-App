@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+    <div class="search" style="margin-top:20px;">
+       <form class="form-inline" id="searchform" action="{% url 'search' %}" method="get">
+           <input type="text" style="width:40%;" name="q" type="text" class="form-control" value="{{ request.GET.q }}" placeholder="Search people Here..." />
+           <button type="button" onclick="searchform.submit()" class="btn btn-outline-primary"><i class="fas fa-search"></i></button>
+       </form>
+    </div>
+
+    {% if people %}
+        <h3 class="text-white my-5">People found</h3>
+        {% for p in people %}
+        <div class="card text-white bg-info mb-3" style="max-width: 60rem;">
+            <div class="card-header"><h2 class="display-6 font-weight-bold ">{{p.name}}</h2></div>
+          <div class="card-body">
+            <h5 class="card-title">Website:   {{ p.url }} </h5>
+            <h5 class="card-text ">Phone:   {{p.phone}}</h5>
+          </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+     <h5 class="card-title">{{mesg}} </h5>
+
+        {% if messages %}
+        {% for message in messages %}
+        <p {% if message.tags %} class="alert alert-{{message.tags}} text-white font-weight-bold mb-5" {% endif %}>{{message}}</p>
+        {% endfor %}
+        {% endif %}
+
+
+
+{% endblock %}

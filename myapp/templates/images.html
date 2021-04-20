@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="image">
+	<div class="wrap">	
+	<button type="submit" class="button" onclick="location.href='{% url 'show_image' %}'">Get Image</button>
+	</div>
+	<br><br>
+{% block showimage %}
+{% endblock %}
+</div>
+{% endblock %}

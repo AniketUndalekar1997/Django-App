@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% block showimage %}
+<div class="row">
+  {% for img in images %}
+  <div class="column">
+    <div class="content-image">
+      <img id="myimg" src="{{img.image.url}}" style="">
+    </div>
+</div>
+	{% endfor %}
+</div>
+{% endblock %}
+{% endblock %}
