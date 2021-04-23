@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'assignment.urls'
@@ -83,11 +84,6 @@ WSGI_APPLICATION = 'assignment.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config()
 }
-
-# prod_db  =  dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(prod_db)
-
-
 
 
 # Password validation
@@ -125,10 +121,8 @@ USE_TZ = True
 django_heroku.settings(locals())
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-                    BASE_DIR / "static",
-                    
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # MEDIA_URL = '/media/'
@@ -142,4 +136,10 @@ AWS_ACCESS_KEY_ID='AKIA5QOGCP2VYERRBPPR'
 AWS_SECRET_ACCESS_KEY='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'
 AWS_STORAGE_BUCKET_NAME = 'djangowebappt'
 AWS_QUERYSTRING_AUTH = False
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+AWS_S3_CUSTOM_DOMAIN = 'djangowebappt.s3.amazonaws.com' 
+AWS_S3_REGION_NAME ='ap-south-1'
+AWS_S3_SIGNATURE_VERSION = 's3v4'
 
+MEDIA_URL = "https://djangowebappt.s3.ap-south-1.amazonaws.com/" 
