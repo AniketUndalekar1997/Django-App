@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'sc1ui@%a4e3&qbqg*sn7dj73e#)q187f#v%9g2i&+%bqr84-!a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -128,9 +128,12 @@ USE_TZ = True
 
 django_heroku.settings(locals())
 
-STATIC_ROOT= os.path.join(BASE_DIR, 'myapp/static/')
 STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+STATICFILES_DIRS = [
+                    BASE_DIR / "static",
+                    
+]
+
 
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
