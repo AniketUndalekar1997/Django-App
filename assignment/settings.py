@@ -125,7 +125,9 @@ USE_TZ = True
 
 django_heroku.settings(locals())
 
+STATIC_ROOT= os.path.join(BASE_DIR, 'myapp/static/')
 STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
