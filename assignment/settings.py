@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'assignment.urls'
@@ -83,11 +84,6 @@ WSGI_APPLICATION = 'assignment.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config()
 }
-
-# prod_db  =  dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(prod_db)
-
-
 
 
 # Password validation
@@ -122,24 +118,21 @@ USE_L10N = True
 
 USE_TZ = True
 
-django_heroku.settings(locals())
 
+
+# serving static files from whitenoise in production
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-                    BASE_DIR / "static",
-                    
-]
-
-
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 #Serving images from AWS S3 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_ACCESS_KEY_ID='AKIA5QOGCP2VYERRBPPR'
-AWS_SECRET_ACCESS_KEY='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'
+AWS_ACCESS_KEY_ID = 'AKIA5QOGCP2V7ZW5WUHP'
+AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'djangowebappt'
 AWS_QUERYSTRING_AUTH = False
-
+AWS_S3_REGION_NAME = "ap-south-1"
+AWS_S3_SIGNATURE_VERSION = "s3v4"
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
