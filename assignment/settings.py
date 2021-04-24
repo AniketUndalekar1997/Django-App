@@ -127,8 +127,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 #Serving images from AWS S3 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_ACCESS_KEY_ID = 'AKIA5QOGCP2V7ZW5WUHP'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = ''
+AWS_SECRET_ACCESS_KEY = ''
 AWS_STORAGE_BUCKET_NAME = 'djangowebappt'
 AWS_QUERYSTRING_AUTH = False
 AWS_S3_REGION_NAME = "ap-south-1"
