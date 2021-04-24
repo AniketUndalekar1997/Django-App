@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'assignment.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+# created postgresql on heroku cloud for this app while production
 
 DATABASES = {
     'default': dj_database_url.config()
