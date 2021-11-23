@@ -7,6 +7,5 @@
 # Django-App
 Technical assignment!
 1. This app has Member creation form rendered using bootstrap form class
-2. search form used to get user and his informations from database.
-3. user can view all the images in work sample clicking get image button will display images dynamically in the same page
-
+2. search field to get user details from DB.
+3. Button which renders images dynamically from AWS.
